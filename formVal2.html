@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>Validation</title>
+    <script>
+        function validate() {
+            var name = document.forms["validationForm"]["name"].value;
+            var contact = document.forms["validationForm"]["phNo"].value;
+            var email = document.forms["validationForm"]["email"].value;
+            var phoneRegularExpression = /^\d{10}$/;
+            var mailRegularExpression = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+            if (name == "") {
+                alert("Name cannot be blank");
+                return false;
+            }
+            if (contact == "") {
+                alert("Phone no cannot be blank");
+                return false;
+            }
+            else if (!(contact.match(phoneRegularExpression))) {
+                alert("Invalid phone number");
+                return false;
+            }
+            if (email == "") {
+                alert("email cannot be blank");
+                return false;
+            }
+            else if (!(email.match(mailRegularExpression))) {
+                alert("invalid email")
+                return false;
+            }
+            else
+                alert("Submitted successfully");
+        }
+    </script>
+</head>
+
+<body>
+    <h1 align="center">Form Validation</h1>
+    <form name="validationForm" onsubmit="return validate()">
+        <table align="center">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Phone No:</td>
+                <td><input type="number" name="phNo"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="submit">
+                </td>
+            </tr>
+        </table>
+            
+            
+    </form>
+</body>
+
+</html>
