@@ -1,0 +1,13 @@
+h1{
+    font-size: 50px;
+    font-weight: bold;
+    background: yellow;
+}
+table{
+    border: 1px;
+    width:400px;
+}
+.tableholder {
+    display: inline-block;
+    border: 1px solid gray;
+}
