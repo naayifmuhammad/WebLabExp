@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>Validation</title>
+    <script>
+        function validate() {
+            var name = document.forms["user-form"]["name"].value;
+            var contact = document.forms["user-form"]["contact"].value;
+            var email = document.forms["user-form"]["email"].value;
+            var pass = document.forms["user-form"]["pass"].value;
+            var cpass = document.forms["user-form"]["cpass"].value;
+            var phoneRegularExpression = /^\d{10}$/;//checks length here using regular expression. Otherwise we can use string length checking.
+            var mailRegularExpression = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;//regular expression for email validation
+            var empty = "";//optional. Just assigned empty string to a variable. can also check name == "". Same thing
+            if (name == empty) {
+                alert("Name: field cannot be empty");
+                return false;
+            }
+            if (contact == empty) {
+                alert("Contact: field cannot be empty");
+                return false;
+            }
+            else if (!(contact.match(phoneRegularExpression))) {
+                alert("Please check your phone number");
+                return false;
+            }
+            if (email == empty) {
+                alert("Email: field cannot be empty");
+                return false;
+            }
+            else if (!(email.match(mailRegularExpression))) {
+                alert("Please check your email")
+                return false;
+            }
+            if(pass != cpass)
+            {
+                alert("Passwords doesn't not match: Please check again before submitting")
+                return false;
+            }
+            else
+                alert("successfully submitted");
+        }
+    </script>
+</head>
+
+<body style="text-align:center">
+    <h1>Form Validation</h1>
+    <form name="user-form" onsubmit="return validate()">
+        
+            <input placeholder="Name" type="text" name="name"><br><br>
+            <input placeholder="Contact no" type="number" name="contact"><br><br>
+            <input placeholder="email" type="email" name="email"><br><br><!-- if you use type="email" here it will automatically check for email format otherwise. give type="text" here and perform validation using JSscript above with regular expressions like normal  -->
+            <input placeholder="Password" type="password" name="pass"><br><br>
+            <input placeholder="Confirm password" type="password" name="cpass"><br><br>
+            <input type="submit" value="submit">
+    </form>
+</body>
+
+</html>
